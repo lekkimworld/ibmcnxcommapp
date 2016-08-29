@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>IBM Connections Community App</title>
+	<style>
+	* {
+		font-family: sans-serif;
+		font-size: 10pt;
+	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" 
+		integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" 
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(window).on('load', function() {
+			// set the hostname into the title
+			$("#host").text(location.host);
+			
+			// await the message event from IBM Connections
+			$(window).on('message', function(event) {
+				// get event data - needing to use event.originalEvent.data 
+				// instead of simple event.data is a jQuery thing...)
+				$("#contextId").text(JSON.stringify(event.originalEvent.data, ' ', 3));
+			});
+			
+			// tell parent (IBM Connections) we are ready to receive message
+			parent.postMessage("appReady", "*");
+		});
+	</script>
+</head>
+<body>
+	<h2>Community app running at <span id="host"></span></h2>
+	<p>The following context was passed from Communities:</p>
+	<pre id="contextId"></pre>
+	<pre id="remotedata">...</pre>
+	<a id="click" href="javascript:void(0)">Click...</a>
+	<script type="text/javascript">
+		$("#click").on("click", function(event) {
+			// alert is not allowed
+			// alert("HelloWord");
+
+			// window.open is allowed (name="_top" not allowed)
+			window.open('https://apps.na.collabserv.com', '_self'); 
+		});
+
+		// we are allowed to talk to the server we were loaded from
+		$.get("/cnxcloudapp/data.json", function(data) {
+			// simply show data
+			$("#remotedata").text(data);
+		});
+	</script>
+</body>
+</html>

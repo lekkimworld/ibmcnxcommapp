@@ -1,0 +1,34 @@
+[
+  {
+    "urls": {
+      "icon_url": "https://sampleconnectionswidget.mybluemix.net/icon.png",
+      "url": "https://apps.na.collabserv.com/connections/resources/web/com.ibm.social.urliWidget.web.resources/widget/urlWidget.xml"
+    },
+    "type": "community_widget",
+    "name": "Community App Example",
+    "description": "This is a description of the app",
+    "payload": {
+      "modes": "view",
+      "defId": "CommunityApp",
+      "url": "https://apps.na.collabserv.com/connections/resources/web/com.ibm.social.urliWidget.web.resources/widget/urlWidget.xml",
+      "iconUrl": "https://github.com/favicon.ico",
+      "primaryWidget": "false",
+      "showInPalette": "true",
+      "themes": "wpthemeThin wpthemeNarrow wpthemeWide wpthemeBanner",
+      "itemSet": [
+        {
+          "value": "100%",
+          "name": "width"
+        },
+        {
+          "value": "https://cph002.intravision.dk/cnxcloudapp/app.html",
+          "name": "url"
+        },
+        {
+          "value": "400px",
+          "name": "height"
+        }
+      ]
+    }
+  }
+]
