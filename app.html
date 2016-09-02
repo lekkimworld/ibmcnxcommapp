@@ -31,19 +31,19 @@
 	<h2>Community app running at <span id="host"></span></h2>
 	<p>The following context was passed from Communities:</p>
 	<pre id="contextId"></pre>
-	<pre id="remotedata">...</pre>
+	Remote data: <pre id="remotedata">...</pre>
 	<a id="click" href="javascript:void(0)">Click...</a>
 	<script type="text/javascript">
 		$("#click").on("click", function(event) {
 			// alert is not allowed
 			// alert("HelloWord");
 
-			// window.open is allowed (name="_top" not allowed)
-			window.open('https://apps.na.collabserv.com', '_self'); 
+			// window.open is allowed (name="_top" not allowed) to _self / _blank
+			window.open('/cnxcloudapp/data.json', '_blank'); 
 		});
 
 		// we are allowed to talk to the server we were loaded from
-		$.get("/cnxcloudapp/data.json", function(data) {
+		$.get('/cnxcloudapp/data.json', function(data) {
 			// simply show data
 			$("#remotedata").text(data);
 		});
